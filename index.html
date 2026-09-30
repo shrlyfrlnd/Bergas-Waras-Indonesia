@@ -1947,6 +1947,325 @@ body {
     .about-section .medical-scan,.contact-section .medical-scan,
     .about-section .medical-ecg,.contact-section .medical-ecg { animation:none !important; }
 }
+
+
+/* ==========================================================
+   RESPONSIVE MASTER - HP / TABLET / iPAD / LAPTOP / DESKTOP
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+button, input, select, textarea { max-width: 100%; font: inherit; }
+
+/* Kontainer utama dibuat fleksibel agar tidak terlalu lebar */
+.container, .hero, .about-section, .contact-section {
+    width: min(1200px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    min-height: 72px;
+    padding: 10px clamp(16px, 4vw, 55px);
+    gap: 18px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navbar .logo { flex: 0 1 auto; min-width: 0; }
+.navbar .logo img { max-height: 52px; width: auto; object-fit: contain; }
+.search { flex: 1 1 280px; min-width: 180px; }
+.search input { width: 100%; min-height: 42px; }
+.cart { flex: 0 0 auto; white-space: nowrap; cursor: pointer; }
+
+/* Hero */
+.hero {
+    min-height: clamp(360px, 48vw, 560px);
+    padding: clamp(36px, 6vw, 80px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.hero-content { width: min(760px, 100%); }
+.hero h1 { font-size: clamp(30px, 5vw, 58px); line-height: 1.1; overflow-wrap: anywhere; }
+.hero p { font-size: clamp(15px, 1.8vw, 20px); line-height: 1.6; }
+
+/* Produk */
+.products {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(14px, 2vw, 24px);
+}
+.product { min-width: 0; width: 100%; overflow: hidden; }
+.product img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.product-info { min-width: 0; }
+.product-info h3 { overflow-wrap: anywhere; line-height: 1.35; }
+.price { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Section Tentang & Hubungi */
+.about-section, .contact-section {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(28px, 5vw, 60px);
+}
+.contact-section { width: min(1200px, calc(100% - 40px)); }
+.contact-grid, .contact-cards, .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.contact-card { min-width: 0; }
+
+/* Modal / keranjang / login */
+.cart-modal { padding: 16px; }
+.cart-box {
+    width: min(560px, 100%);
+    max-height: min(88vh, 760px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Form admin/user */
+.admin-container, .admin-panel, .dashboard, .login-box, .register-box {
+    max-width: 100%;
+}
+.admin-product-row, .admin-user-row, .admin-order-row {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.admin-product-row img { flex: 0 0 auto; }
+
+/* Tabel agar tidak merusak layout di layar kecil */
+.table-responsive, .admin-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+table { width: 100%; min-width: 620px; border-collapse: collapse; }
+
+/* ---------- Tablet / iPad portrait & landscape ---------- */
+@media (max-width: 1024px) {
+    .container, .hero, .about-section, .contact-section {
+        width: min(94%, 960px);
+    }
+    .products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .navbar { padding-left: 3%; padding-right: 3%; }
+    .hero { padding: clamp(32px, 5vw, 60px); }
+}
+
+/* ---------- HP landscape / iPad mini / tablet kecil ---------- */
+@media (max-width: 768px) {
+    .navbar {
+        min-height: auto;
+        justify-content: space-between;
+        padding: 10px 4%;
+        gap: 10px;
+    }
+    .navbar .logo { max-width: 55%; }
+    .search { order: 3; flex: 1 0 100%; min-width: 0; }
+    .search input { min-height: 44px; }
+    .cart { font-size: 14px; }
+
+    .container, .hero, .about-section, .contact-section {
+        width: 92%;
+    }
+    .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .product-info { padding: 12px !important; }
+    .product-info h3 { font-size: 16px; }
+    .price { font-size: 15px; }
+
+    .hero {
+        min-height: 400px;
+        padding: 34px 24px;
+        text-align: center;
+        justify-content: center;
+    }
+    .hero-content { margin: auto; }
+    .hero h1 { font-size: clamp(28px, 7vw, 44px); }
+
+    .about-section, .contact-section { padding: 30px 22px; }
+    .contact-grid, .contact-cards, .about-grid { grid-template-columns: 1fr; }
+
+    /* Semua form admin menjadi satu kolom */
+    .admin-grid, .admin-form-grid, .form-grid { grid-template-columns: 1fr !important; }
+    .admin-actions { flex-wrap: wrap; }
+    .admin-actions button { flex: 1 1 180px; }
+}
+
+/* ---------- HP ---------- */
+@media (max-width: 480px) {
+    body { font-size: 14px; }
+    .navbar { padding: 8px 12px; gap: 8px; }
+    .navbar .logo { max-width: calc(100% - 110px); }
+    .navbar .logo img { max-height: 42px; }
+    .cart { font-size: 13px; }
+
+    .container, .hero, .about-section, .contact-section { width: calc(100% - 24px); }
+    .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .product-info { padding: 9px !important; }
+    .product-info h3 { font-size: 14px; margin-bottom: 6px; }
+    .price { font-size: 13px; }
+    .product button { width: 100%; min-height: 38px; font-size: 12px; padding: 8px 6px; }
+
+    .hero {
+        min-height: 330px;
+        padding: 28px 16px;
+        border-radius: 18px;
+    }
+    .hero h1 { font-size: 27px; }
+    .hero p { font-size: 14px; }
+    .hero button { width: 100%; min-height: 44px; }
+
+    .about-section, .contact-section { padding: 24px 16px; border-radius: 18px; }
+    .about-section h2, .contact-section h2 { font-size: 25px; }
+    .contact-card { padding: 16px !important; }
+
+    .cart-modal { padding: 8px; }
+    .cart-box { width: 100%; max-height: 92vh; border-radius: 16px; }
+    .cart-header { position: sticky; top: 0; z-index: 5; }
+
+    input, select, textarea { font-size: 16px !important; } /* mencegah zoom otomatis iPhone */
+    button { min-height: 42px; }
+}
+
+/* ---------- HP sangat kecil ---------- */
+@media (max-width: 360px) {
+    .products { grid-template-columns: 1fr; }
+    .navbar .logo { max-width: 100%; }
+    .cart { width: 100%; text-align: center; }
+    .search { order: 3; }
+    .hero h1 { font-size: 25px; }
+}
+
+/* ---------- Layar besar ---------- */
+@media (min-width: 1400px) {
+    .products { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .container, .hero, .about-section, .contact-section { width: min(1280px, calc(100% - 80px)); }
+}
+
+/* Sentuhan mobile: cegah animasi dekorasi melebar keluar layar */
+@media (max-width: 768px) {
+    .medical-orb { max-width: 90px; max-height: 90px; }
+    .medical-decor { overflow: hidden; }
+    .about-section::after, .contact-section::after { opacity: .55; }
+}
+
+
+/* ================= SPACING POLISH ================= */
+.navbar {
+    padding-left: clamp(18px, 3vw, 48px);
+    padding-right: clamp(18px, 3vw, 48px);
+    gap: 24px;
+}
+
+.navbar > div:last-child {
+    gap: 12px !important;
+}
+
+.hero {
+    margin-top: 28px !important;
+    margin-bottom: 42px !important;
+}
+
+.hero-content {
+    padding-top: 34px;
+    padding-bottom: 24px;
+    position: relative;
+    z-index: 5;
+}
+
+.medical-marquee {
+    top: 14px !important;
+}
+
+.container {
+    margin-top: 52px;
+    margin-bottom: 52px;
+}
+
+.about-section,
+.contact-section {
+    margin-top: 52px !important;
+    margin-bottom: 52px !important;
+}
+
+.categories {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.products {
+    row-gap: 28px !important;
+    column-gap: 24px !important;
+}
+
+@media (max-width: 1024px) {
+    .hero { margin-top: 24px !important; }
+    .container { margin-top: 42px; margin-bottom: 42px; }
+    .products { row-gap: 22px !important; column-gap: 18px !important; }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 18px;
+        gap: 12px;
+    }
+    .navbar > div:last-child {
+        gap: 8px !important;
+    }
+    .hero {
+        margin-top: 20px !important;
+        margin-bottom: 34px !important;
+    }
+    .hero-content {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .container {
+        margin-top: 38px;
+        margin-bottom: 38px;
+    }
+    .about-section,
+    .contact-section {
+        margin-top: 38px !important;
+        margin-bottom: 38px !important;
+    }
+    .products {
+        row-gap: 18px !important;
+        column-gap: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 9px 14px;
+    }
+    .hero {
+        margin-top: 16px !important;
+        margin-bottom: 28px !important;
+    }
+    .hero-content {
+        padding-top: 26px;
+        padding-bottom: 18px;
+    }
+    .container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .about-section,
+    .contact-section {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+}
+
 </style>
 </head>
 
@@ -2264,236 +2583,10 @@ body {
 
         <div class="products" id="productList">
 
-
-            <!-- PRODUK 1 -->
-
-            <div class="product" data-name="Jam Tangan Classic" data-category="Aksesoris">
-
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Jam Tangan">
-
-                <div class="product-info">
-
-                    <h3>
-                        Jam Tangan Classic
-                    </h3>
-
-                    <div class="price">
-                        Rp299.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Jam Tangan Classic',
-            299000,
-            'https://images.unsplash.com/photo-1523275335684-37898b6baf30'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 2 -->
-
-            <div class="product" data-name="Sepatu Sneakers" data-category="Aksesoris">
-
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Sepatu">
-
-                <div class="product-info">
-
-                    <h3>
-                        Sepatu Sneakers
-                    </h3>
-
-                    <div class="price">
-                        Rp450.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Sepatu Sneakers',
-            450000,
-            'https://images.unsplash.com/photo-1542291026-7eec264c27ff'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 3 -->
-
-            <div class="product" data-name="Kamera Digital" data-category="Elektronik">
-
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Kamera">
-
-                <div class="product-info">
-
-                    <h3>
-                        Kamera Digital
-                    </h3>
-
-                    <div class="price">
-                        Rp2.500.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Kamera Digital',
-            2500000,
-            'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 4 -->
-
-            <div class="product" data-name="Tas Casual" data-category="Peralatan Kantor">
-
-                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa" alt="Tas">
-
-                <div class="product-info">
-
-                    <h3>
-                        Tas Casual
-                    </h3>
-
-                    <div class="price">
-                        Rp350.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Tas Casual',
-            350000,
-            'https://images.unsplash.com/photo-1548036328-c9fa89d128fa'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 5 -->
-
-            <div class="product" data-name="Kaos Basic" data-category="Alat Kesehatan">
-
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="Kaos">
-
-                <div class="product-info">
-
-                    <h3>
-                        Kaos Basic
-                    </h3>
-
-                    <div class="price">
-                        Rp120.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Kaos Basic',
-            120000,
-            'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 6 -->
-
-            <div class="product" data-name="Headphone Wireless" data-category="Elektronik">
-
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphone">
-
-                <div class="product-info">
-
-                    <h3>
-                        Headphone Wireless
-                    </h3>
-
-                    <div class="price">
-                        Rp550.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Headphone Wireless',
-            550000,
-            'https://images.unsplash.com/photo-1505740420928-5e560c06d30e'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 7 -->
-
-            <div class="product" data-name="Parfum Premium" data-category="Alat Kesehatan">
-
-                <img src="https://images.unsplash.com/photo-1585386959984-a41552231693" alt="Parfum">
-
-                <div class="product-info">
-
-                    <h3>
-                        Parfum Premium
-                    </h3>
-
-                    <div class="price">
-                        Rp275.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Parfum Premium',
-            275000,
-            'https://images.unsplash.com/photo-1585386959984-a41552231693'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUK 8 -->
-
-            <div class="product" data-name="Kacamata Fashion" data-category="Alat Penunjang Pelayanan Kesehatan">
-
-                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f" alt="Kacamata">
-
-                <div class="product-info">
-
-                    <h3>
-                        Kacamata Fashion
-                    </h3>
-
-                    <div class="price">
-                        Rp180.000
-                    </div>
-
-                    <button onclick="addCart(
-            'Kacamata Fashion',
-            180000,
-            'https://images.unsplash.com/photo-1572635196237-14b3f281503f'
-          )">
-                        + Keranjang
-                    </button>
-
-                </div>
-
+            <!-- Produk dikelola dari Dashboard Admin.
+                 Tidak ada produk bawaan/hardcoded di halaman toko. -->
+            <div class="product-empty" id="productEmptyMessage">
+                Belum ada produk. Silakan tambahkan produk melalui Dashboard Admin.
             </div>
 
         </div>
@@ -2609,15 +2702,6 @@ body {
             </div>
         </div>
     </div>
-
-    <footer>
-
-        <p>
-            © 2026 Shopin. All Rights Reserved.
-        </p>
-
-    </footer>
-
 
     <!-- ================= JAVASCRIPT ================= -->
 
@@ -3050,7 +3134,31 @@ body {
 
 
         // ================= ADMIN DASHBOARD =================
+        // Produk contoh bawaan dari versi lama website.
+        // Dihapus otomatis dari localStorage supaya hanya produk yang ditambahkan admin yang tampil.
+        const OLD_DEMO_PRODUCT_NAMES = new Set([
+            "Jam Tangan Classic",
+            "Sepatu Sneakers",
+            "Kamera Digital",
+            "Tas Casual",
+            "Kaos Basic",
+            "Headphone Wireless",
+            "Parfum Premium",
+            "Kacamata Fashion"
+        ]);
+
         let adminProducts = JSON.parse(localStorage.getItem("bergasProducts") || "null");
+
+        if (Array.isArray(adminProducts)) {
+            const cleanedProducts = adminProducts.filter(product =>
+                product && !OLD_DEMO_PRODUCT_NAMES.has(String(product.name || "").trim())
+            );
+
+            if (cleanedProducts.length !== adminProducts.length) {
+                adminProducts = cleanedProducts;
+                localStorage.setItem("bergasProducts", JSON.stringify(adminProducts));
+            }
+        }
 
         function getOrders() {
             return JSON.parse(localStorage.getItem("bergasOrders") || "[]");
@@ -3062,16 +3170,13 @@ body {
 
         function initializeAdminProducts() {
             if (!adminProducts) {
-                adminProducts = Array.from(document.querySelectorAll("#productList .product")).map(product => ({
-                    name: product.getAttribute("data-name") || "",
-                    price: Number((product.querySelector(".price")?.innerText || "0").replace(/[^\d]/g, "")),
-                    image: product.querySelector("img")?.src || "",
-                    category: product.getAttribute("data-category") || ""
-                }));
+                // Produk toko tidak lagi diambil dari HTML bawaan.
+                // Pada perangkat baru, toko dimulai kosong sampai admin menambahkan produk.
+                adminProducts = [];
                 saveAdminProducts();
-            } else {
-                renderStoreProducts();
             }
+
+            renderStoreProducts();
             syncAdminProductList();
             updateAdminStats();
         }
